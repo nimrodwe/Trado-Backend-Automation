@@ -85,8 +85,9 @@ class Commons(object):
 
     PRODUCTS = (U.By.CSS_SELECTOR, 'a.menu_menuItem:nth-child(2)')
     USERS = (U.By.CSS_SELECTOR, 'a.menu_menuItem:nth-child(27)')
-    DEPARTMENTS = (U.By.CSS_SELECTOR, 'a.menu_menuItem:nth-child(24)')
     ORDERS = (U.By.CSS_SELECTOR, 'a.menu_menuItem:nth-child(5)')
+    BRANCHES = (U.By.CSS_SELECTOR, 'a.menu_menuItem:nth-child(24)')
+    # השלוש נקודות בצד שמאל
     PAGE_SETTING = (U.By.CSS_SELECTOR, '.fa-ellipsis-v')
     PAGE_SEARCH = (U.By.CSS_SELECTOR, '.input_iconInput > input:nth-child(2)')
 
@@ -104,6 +105,8 @@ class LogIn(Commons):
         self.click(Commons.CODE_VISIBILITY)
         psd = self.get_text(Commons.PASSWORD)
         return psd
+
+    # phone number, code and remember me required (remember me is either True OR False
 
     def log_in(self, phone_number, code, remember):
         logging = True
@@ -127,8 +130,9 @@ class LogIn(Commons):
                     break
             except:
                 pass
-            U.sleep(2)
+            U.sleep(1)
             self.wait_for(Commons.SELECT_TRADO).click()
+            U.sleep(2)
             logging = False
 
     def find_logout(self):

@@ -2,7 +2,6 @@ import allure
 import pytest
 from Assets.Pages.Commons import LogIn
 import Assets.Pages.Backend_utils as U
-from Assets.Pages.Commons import Commons
 
 
 @allure.epic('Test Login')
