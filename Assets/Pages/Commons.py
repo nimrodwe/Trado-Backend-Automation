@@ -68,6 +68,10 @@ class Commons(object):
         val = css.value_of_css_property(value)
         return val
 
+    def upload_image(self, locator, image_path):
+        locator = self.driver.find_element(*locator)
+        locator.send_keys(image_path)
+
 
 
     # LOGIN LOCATORS #
@@ -92,6 +96,13 @@ class Commons(object):
     PAGE_SEARCH = (U.By.CSS_SELECTOR, '.input_iconInput > input:nth-child(2)')
 
     # ADVANCED FUNCTIONS #
+
+
+class DashboardAndHeaders(Commons):
+    BURGER_MENU = (U.By.CSS_SELECTOR, '.fa-bars')
+
+    def click_burger_menu(self):
+        self.click(self.BURGER_MENU)
 
 
 class LogIn(Commons):
