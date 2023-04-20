@@ -46,6 +46,7 @@ class Commons(object):
         return temp.text
 
     def click(self, locator):
+        self.wait_for(locator)
         self.driver.find_element(*locator).click()
 
     def insert(self, locator, insertion):
@@ -56,6 +57,11 @@ class Commons(object):
         locator = self.driver.find_element(*locator)
         locator.click()
         locator.send_keys(U.keys.CLEAR)
+
+    def get_class(self, locator):
+        locator = self.driver.find_element(*locator)
+        class_name = locator.get_attribute('class')
+        return class_name
 
     def get_element_size(self, locator):
         div = self.driver.find_element(*locator)
@@ -100,9 +106,24 @@ class Commons(object):
 
 class DashboardAndHeaders(Commons):
     BURGER_MENU = (U.By.CSS_SELECTOR, '.fa-bars')
+    STORE_SELECTOR = (U.By.CSS_SELECTOR, 'a.loggedin_row')
+    IS_MENU_OPEN = (U.By.CSS_SELECTOR, '.pages_pages > div:nth-child(1)')
+    LOGO = (U.By.CSS_SELECTOR, '.logo_logo')
+    DANI_MAMTAKIM = (U.By.CSS_SELECTOR, '.storesList_store')
+    LOADING = (U.By.CSS_SELECTOR, '.loader_miniLoader')
 
     def click_burger_menu(self):
         self.click(self.BURGER_MENU)
+
+    def click_logo(self):
+        U.sleep(1)
+        self.click(self.LOGO)
+
+    def switch_store(self, store_locator):
+        self.click(self.STORE_SELECTOR)
+        U.sleep(1)
+        self.click(store_locator)
+        U.sleep(2)
 
 
 class LogIn(Commons):
