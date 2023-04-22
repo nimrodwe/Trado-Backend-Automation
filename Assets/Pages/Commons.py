@@ -32,6 +32,10 @@ class Commons(object):
     def wait_for_url_change(self, url):
         return self._wait.until(U.ec.url_to_be(url))
 
+    def clear_department_name(self, locator):
+        locator = self.driver.find_element(*locator)
+        locator.clear()
+
     def wait_for_alert(self):
         U.sleep(1)
         return self._wait.until(U.ec.alert_is_present())

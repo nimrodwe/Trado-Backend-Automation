@@ -24,6 +24,18 @@ class MongoRequests(MongoCommons):
             dep_name = cur_department.get('name')
             return dep_name
 
+    def find_existing_image_branch(self, branch_name):
+        for department in self.departments.find({'name': branch_name}):
+            cur_department = department
+            dep_name = cur_department.get('image')
+            return dep_name
+
+    def find_existing_background_image_branch(self, branch_name):
+        for department in self.departments.find({'name': branch_name}):
+            cur_department = department
+            dep_name = cur_department.get('coverImage')
+            return dep_name
+
     def get_mailing_list_status(self, registered_num):
         for user in self.users.find({'phone': registered_num}):
             existing_user = user
