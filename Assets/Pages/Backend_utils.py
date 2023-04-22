@@ -18,4 +18,3 @@ import random
 import pytest
 # import locust
 # import pymongo
-import faker

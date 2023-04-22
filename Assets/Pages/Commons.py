@@ -33,6 +33,7 @@ class Commons(object):
         return self._wait.until(U.ec.url_to_be(url))
 
     def wait_for_alert(self):
+        U.sleep(1)
         return self._wait.until(U.ec.alert_is_present())
 
     def find(self, locator):
@@ -145,6 +146,7 @@ class LogIn(Commons):
         while logging:
             self.wait_for(Commons.LOGIN)
             self.insert(Commons.LOGIN, phone_number)
+            U.sleep(1)
             self.click(Commons.CLICK_LOGIN)
             U.sleep(1)
             err = self.find(Commons.NO_SUCH_USER_ERROR)
