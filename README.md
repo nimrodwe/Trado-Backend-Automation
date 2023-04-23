@@ -9,3 +9,5 @@ Python
 Selenium
 MongoDB
 Allure
+
+Url: https://qa-admin.trado.co.il/ 
