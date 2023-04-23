@@ -37,7 +37,7 @@ class OrdersPage(Commons):
 
     def click_order_end(self):
         U.sleep(3)
-        self.click(self.READY_ORDERS)
+        self.click(self.ORDER_END)
 
     def click_orders(self):
         U.sleep(1)

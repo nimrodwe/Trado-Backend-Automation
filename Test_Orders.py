@@ -188,7 +188,7 @@ def test_item_missing_btn(driver):
         class_name = orders.get_class(orders.FIRST_PRODUCT_MISSING_BTN)
         assert class_name == 'product_btn product_missing'
     with allure.step('Restoring item amount fo r next test'):
-        orders.add_items_to_order()
+        orders.add_one_item_to_order()
 
 
 @allure.epic('Test Orders')
@@ -252,7 +252,7 @@ def test_ready_orders_page(driver):
     with allure.step('Going to ready orders'):
         orders.click_ready_orders()
     with allure.step('asserting ready order is visible'):
-        ord_id = orders.get_class(orders.IN_DELIVERY)
+        ord_id = orders.get_class(orders.READY_ORDERS)
         assert ord_id == 'tabs_tab tabs_active'
 
 
@@ -287,9 +287,9 @@ def test_end_order_page(driver):
         login.log_in('1951111111', '1234', False)
     with allure.step("Navigating to order page"):
         orders.click_orders()
-    with allure.step('Going to in delivery orders'):
+    with allure.step('Going to end orders'):
         orders.click_order_end()
-    with allure.step('asserting ready order is visible'):
+    with allure.step('asserting end orders is visible'):
         ord_id = orders.get_class(orders.ORDER_END)
         assert ord_id == 'tabs_tab tabs_active'
 
